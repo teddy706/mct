@@ -1,4 +1,18 @@
-export default function Education() {
+import { supabase } from "@/lib/supabase";
+import { Education } from "@/lib/types";
+
+export const revalidate = 0; // Disable caching for dynamic updates
+
+export default async function EducationPage() {
+    const { data: educationList, error } = await supabase
+        .from("education")
+        .select("*")
+        .order("date", { ascending: false });
+
+    if (error) {
+        console.error("Error fetching education:", error);
+    }
+
     return (
         <>
             <section className="hero">
@@ -7,28 +21,24 @@ export default function Education() {
             </section>
 
             <section className="grid">
-                {/* Example Entry */}
-                <div className="card">
-                    <h3>Azure Fundamentals (AZ-900)</h3>
-                    <p>
-                        <strong>Date:</strong> 2024-01-15
-                    </p>
-                    <p>
-                        <strong>Role:</strong> Attendee
-                    </p>
-                    <p>Microsoft Azure의 기본 개념과 서비스에 대해 학습했습니다.</p>
-                </div>
+                {educationList?.map((edu: Education) => (
+                    <div key={edu.id} className="card">
+                        <h3>{edu.title}</h3>
+                        <p>
+                            <strong>Date:</strong> {edu.date}
+                        </p>
+                        <p>
+                            <strong>Role:</strong> {edu.role}
+                        </p>
+                        <p>{edu.description}</p>
+                    </div>
+                ))}
 
-                <div className="card">
-                    <h3>Microsoft 365 Fundamentals (MS-900)</h3>
-                    <p>
-                        <strong>Date:</strong> 2024-02-20
+                {(!educationList || educationList.length === 0) && (
+                    <p style={{ textAlign: "center", gridColumn: "1/-1" }}>
+                        등록된 교육 이력이 없습니다.
                     </p>
-                    <p>
-                        <strong>Role:</strong> Speaker
-                    </p>
-                    <p>사내 직원을 대상으로 M365 기초 교육을 진행했습니다.</p>
-                </div>
+                )}
             </section>
         </>
     );
