@@ -3,6 +3,9 @@
 import { useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
+import Input from '@/components/ui/Input';
+import Textarea from '@/components/ui/Textarea';
+import Button from '@/components/ui/Button';
 
 export default function CreateStudyLogPage() {
     const [topic, setTopic] = useState('');
@@ -32,76 +35,68 @@ export default function CreateStudyLogPage() {
     };
 
     return (
-        <div style={{ maxWidth: '600px', margin: '2rem auto' }}>
+        <div className="form-container-lg">
             <h1>Add Study Log</h1>
             <form onSubmit={handleSubmit} className="card">
-                <div style={{ marginBottom: '1rem' }}>
-                    <label style={{ display: 'block', marginBottom: '0.5rem' }}>Topic</label>
-                    <input
-                        type="text"
-                        value={topic}
-                        onChange={(e) => setTopic(e.target.value)}
-                        required
-                        style={{ width: '100%', padding: '0.5rem' }}
-                    />
-                </div>
-                <div style={{ marginBottom: '1rem' }}>
-                    <label style={{ display: 'block', marginBottom: '0.5rem' }}>Date</label>
-                    <input
-                        type="date"
-                        value={date}
-                        onChange={(e) => setDate(e.target.value)}
-                        required
-                        style={{ width: '100%', padding: '0.5rem' }}
-                    />
-                </div>
-                <div style={{ marginBottom: '1rem' }}>
-                    <label style={{ display: 'block', marginBottom: '0.5rem' }}>Tags (comma separated)</label>
-                    <input
-                        type="text"
-                        value={tags}
-                        onChange={(e) => setTags(e.target.value)}
-                        placeholder="Next.js, React, Supabase"
-                        style={{ width: '100%', padding: '0.5rem' }}
-                    />
-                </div>
-                <div style={{ marginBottom: '1rem' }}>
-                    <label style={{ display: 'block', marginBottom: '0.5rem' }}>Content</label>
-                    <textarea
-                        value={content}
-                        onChange={(e) => setContent(e.target.value)}
-                        rows={10}
-                        required
-                        style={{ width: '100%', padding: '0.5rem' }}
-                    />
-                </div>
-                <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
-                    <button type="submit" className="btn" disabled={loading} style={{ flex: 1 }}>
+                <Input
+                    id="topic"
+                    label="Topic"
+                    type="text"
+                    value={topic}
+                    onChange={(e) => setTopic(e.target.value)}
+                    required
+                />
+                <Input
+                    id="date"
+                    label="Date"
+                    type="date"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                    required
+                />
+                <Input
+                    id="tags"
+                    label="Tags (comma separated)"
+                    type="text"
+                    value={tags}
+                    onChange={(e) => setTags(e.target.value)}
+                    placeholder="Next.js, React, Supabase"
+                />
+                <Textarea
+                    id="content"
+                    label="Content"
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
+                    rows={10}
+                    required
+                />
+                <div className="flex-center gap-2 mt-4">
+                    <Button type="submit" disabled={loading} className="w-full">
                         {loading ? 'Saving...' : 'Save Log'}
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                         type="button"
-                        className="btn"
+                        variant="secondary"
                         onClick={() => {
                             setTopic('');
                             setContent('');
                             setDate('');
                             setTags('');
                         }}
-                        style={{ flex: 1, backgroundColor: '#6c757d' }}
                         disabled={loading}
+                        className="w-full"
                     >
                         Reset
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                         type="button"
-                        className="btn"
+                        variant="danger"
                         onClick={() => router.back()}
-                        style={{ flex: 1, backgroundColor: '#dc3545' }}
                         disabled={loading}
+                        className="w-full"
                     >
                         Cancel
-                    </button>
+                    </Button>
                 </div>
             </form>
         </div>

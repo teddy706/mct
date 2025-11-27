@@ -1,5 +1,6 @@
 import { supabase } from "@/lib/supabase";
 import { Resource } from "@/lib/types";
+import PageHeader from "@/components/PageHeader";
 
 export const revalidate = 0;
 
@@ -15,10 +16,10 @@ export default async function ResourcesPage() {
 
     return (
         <>
-            <section className="hero">
-                <h1>Resources</h1>
-                <p>MCT 준비와 학습에 유용한 사이트 모음입니다.</p>
-            </section>
+            <PageHeader
+                title="Resources"
+                description="MCT 준비와 학습에 유용한 사이트 모음입니다."
+            />
 
             <section className="grid">
                 {resources?.map((res: Resource) => (

@@ -1,6 +1,7 @@
 import { supabase } from "@/lib/supabase";
 import { StudyLog } from "@/lib/types";
 import { Linkify } from "@/lib/utils";
+import PageHeader from "@/components/PageHeader";
 
 export const revalidate = 0;
 
@@ -16,10 +17,10 @@ export default async function StudyPage() {
 
     return (
         <>
-            <section className="hero">
-                <h1>Study Log</h1>
-                <p>지속적인 학습 기록을 남깁니다.</p>
-            </section>
+            <PageHeader
+                title="Study Log"
+                description="지속적인 학습 기록을 남깁니다."
+            />
 
             <section>
                 {studyLogs?.map((log: StudyLog) => (

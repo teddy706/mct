@@ -3,6 +3,9 @@
 import { useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
+import Input from '@/components/ui/Input';
+import Textarea from '@/components/ui/Textarea';
+import Button from '@/components/ui/Button';
 
 export default function CreateResourcePage() {
     const [title, setTitle] = useState('');
@@ -30,74 +33,66 @@ export default function CreateResourcePage() {
     };
 
     return (
-        <div style={{ maxWidth: '600px', margin: '2rem auto' }}>
+        <div className="form-container-lg">
             <h1>Add Resource</h1>
             <form onSubmit={handleSubmit} className="card">
-                <div style={{ marginBottom: '1rem' }}>
-                    <label style={{ display: 'block', marginBottom: '0.5rem' }}>Title</label>
-                    <input
-                        type="text"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        required
-                        style={{ width: '100%', padding: '0.5rem' }}
-                    />
-                </div>
-                <div style={{ marginBottom: '1rem' }}>
-                    <label style={{ display: 'block', marginBottom: '0.5rem' }}>URL</label>
-                    <input
-                        type="url"
-                        value={url}
-                        onChange={(e) => setUrl(e.target.value)}
-                        required
-                        style={{ width: '100%', padding: '0.5rem' }}
-                    />
-                </div>
-                <div style={{ marginBottom: '1rem' }}>
-                    <label style={{ display: 'block', marginBottom: '0.5rem' }}>Category</label>
-                    <input
-                        type="text"
-                        value={category}
-                        onChange={(e) => setCategory(e.target.value)}
-                        style={{ width: '100%', padding: '0.5rem' }}
-                    />
-                </div>
-                <div style={{ marginBottom: '1rem' }}>
-                    <label style={{ display: 'block', marginBottom: '0.5rem' }}>Description</label>
-                    <textarea
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        rows={4}
-                        style={{ width: '100%', padding: '0.5rem' }}
-                    />
-                </div>
-                <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
-                    <button type="submit" className="btn" disabled={loading} style={{ flex: 1 }}>
+                <Input
+                    id="title"
+                    label="Title"
+                    type="text"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    required
+                />
+                <Input
+                    id="url"
+                    label="URL"
+                    type="url"
+                    value={url}
+                    onChange={(e) => setUrl(e.target.value)}
+                    required
+                />
+                <Input
+                    id="category"
+                    label="Category"
+                    type="text"
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                />
+                <Textarea
+                    id="description"
+                    label="Description"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    rows={4}
+                />
+                <div className="flex-center gap-2 mt-4">
+                    <Button type="submit" disabled={loading} className="w-full">
                         {loading ? 'Saving...' : 'Save Resource'}
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                         type="button"
-                        className="btn"
+                        variant="secondary"
                         onClick={() => {
                             setTitle('');
                             setUrl('');
                             setCategory('');
                             setDescription('');
                         }}
-                        style={{ flex: 1, backgroundColor: '#6c757d' }}
                         disabled={loading}
+                        className="w-full"
                     >
                         Reset
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                         type="button"
-                        className="btn"
+                        variant="danger"
                         onClick={() => router.back()}
-                        style={{ flex: 1, backgroundColor: '#dc3545' }}
                         disabled={loading}
+                        className="w-full"
                     >
                         Cancel
-                    </button>
+                    </Button>
                 </div>
             </form>
         </div>

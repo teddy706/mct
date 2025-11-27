@@ -1,5 +1,6 @@
 import { supabase } from "@/lib/supabase";
 import { Education } from "@/lib/types";
+import PageHeader from "@/components/PageHeader";
 
 export const revalidate = 0; // Disable caching for dynamic updates
 
@@ -15,10 +16,10 @@ export default async function EducationPage() {
 
     return (
         <>
-            <section className="hero">
-                <h1>Education History</h1>
-                <p>참여한 교육 및 강의 이력입니다.</p>
-            </section>
+            <PageHeader
+                title="Education History"
+                description="참여한 교육 및 강의 이력입니다."
+            />
 
             <section className="grid">
                 {educationList?.map((edu: Education) => (
