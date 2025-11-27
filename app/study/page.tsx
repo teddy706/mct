@@ -23,9 +23,9 @@ export default async function StudyPage() {
             <section>
                 {studyLogs?.map((log: StudyLog) => (
                     <article key={log.id} className="card" style={{ marginBottom: "2rem" }}>
-                        <h3>{log.title}</h3>
+                        <h3>{log.topic}</h3>
                         <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}>
-                            {log.date} | Category: {log.category}
+                            {log.date} | Tags: {log.tags?.join(", ")}
                         </p>
                         <div style={{ marginTop: "1rem", whiteSpace: "pre-wrap" }}>
                             {log.content}

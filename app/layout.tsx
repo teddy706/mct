@@ -33,6 +33,9 @@ export default function RootLayout({
                             <li>
                                 <Link href="/resources">Resources</Link>
                             </li>
+                            <li>
+                                <Link href="/admin">Admin</Link>
+                            </li>
                         </ul>
                     </nav>
                 </header>

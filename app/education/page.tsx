@@ -28,7 +28,7 @@ export default async function EducationPage() {
                             <strong>Date:</strong> {edu.date}
                         </p>
                         <p>
-                            <strong>Role:</strong> {edu.role}
+                            <strong>Institution:</strong> {edu.institution}
                         </p>
                         <p>{edu.description}</p>
                     </div>
@@ -39,7 +39,7 @@ export default async function EducationPage() {
                         등록된 교육 이력이 없습니다.
                     </p>
                 )}
-            </section>
+            </section >
         </>
     );
 }

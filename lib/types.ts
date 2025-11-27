@@ -1,26 +1,26 @@
-export type Education = {
-    id: number;
+export interface Education {
+    id: string;
     title: string;
+    institution: string;
     date: string;
-    role: 'Attendee' | 'Speaker';
-    description: string;
+    description: string | null;
     created_at: string;
-};
+}
 
-export type StudyLog = {
-    id: number;
-    title: string;
-    date: string;
-    category: string;
+export interface StudyLog {
+    id: string;
+    topic: string;
     content: string;
+    date: string;
+    tags: string[] | null;
     created_at: string;
-};
+}
 
-export type Resource = {
-    id: number;
+export interface Resource {
+    id: string;
     title: string;
     url: string;
-    description: string;
-    category: string;
+    category: string | null;
+    description: string | null;
     created_at: string;
-};
+}
