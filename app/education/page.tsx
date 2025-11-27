@@ -35,7 +35,7 @@ export default async function EducationPage() {
                 ))}
 
                 {(!educationList || educationList.length === 0) && (
-                    <p style={{ textAlign: "center", gridColumn: "1/-1" }}>
+                    <p className="text-center col-span-full">
                         등록된 교육 이력이 없습니다.
                     </p>
                 )}

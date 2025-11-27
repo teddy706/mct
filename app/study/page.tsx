@@ -1,5 +1,6 @@
 import { supabase } from "@/lib/supabase";
 import { StudyLog } from "@/lib/types";
+import { Linkify } from "@/lib/utils";
 
 export const revalidate = 0;
 
@@ -22,13 +23,13 @@ export default async function StudyPage() {
 
             <section>
                 {studyLogs?.map((log: StudyLog) => (
-                    <article key={log.id} className="card" style={{ marginBottom: "2rem" }}>
+                    <article key={log.id} className="card mb-8">
                         <h3>{log.topic}</h3>
-                        <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}>
+                        <p className="meta-text">
                             {log.date} | Tags: {log.tags?.join(", ")}
                         </p>
-                        <div style={{ marginTop: "1rem", whiteSpace: "pre-wrap" }}>
-                            {log.content}
+                        <div className="content-body">
+                            <Linkify text={log.content} />
                         </div>
                     </article>
                 ))}

@@ -31,32 +31,30 @@ export default function LoginPage() {
     };
 
     return (
-        <div style={{ maxWidth: '400px', margin: '4rem auto', padding: '2rem' }}>
+        <div className="form-container">
             <h1>로그인</h1>
             <form onSubmit={handleLogin} className="card">
-                <div style={{ marginBottom: '1rem' }}>
-                    <label htmlFor="email" style={{ display: 'block', marginBottom: '0.5rem' }}>이메일</label>
+                <div className="form-group">
+                    <label htmlFor="email">이메일</label>
                     <input
                         id="email"
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
-                        style={{ width: '100%', padding: '0.5rem' }}
                     />
                 </div>
-                <div style={{ marginBottom: '1rem' }}>
-                    <label htmlFor="password" style={{ display: 'block', marginBottom: '0.5rem' }}>비밀번호</label>
+                <div className="form-group">
+                    <label htmlFor="password">비밀번호</label>
                     <input
                         id="password"
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
-                        style={{ width: '100%', padding: '0.5rem' }}
                     />
                 </div>
-                {error && <p style={{ color: 'red', marginBottom: '1rem' }}>{error}</p>}
+                {error && <p style={{ color: 'var(--error-color)', marginBottom: '1rem' }}>{error}</p>}
                 <button type="submit" className="btn" disabled={loading} style={{ width: '100%' }}>
                     {loading ? '로그인 중...' : '로그인'}
                 </button>

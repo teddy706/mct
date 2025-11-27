@@ -26,12 +26,11 @@ export default async function ResourcesPage() {
                         key={res.id}
                         href={res.url}
                         target="_blank"
-                        className="card"
-                        style={{ textDecoration: "none", color: "inherit", display: "block" }}
+                        className="card card-link"
                     >
                         <h3>{res.title}</h3>
                         <p>{res.description}</p>
-                        <span style={{ fontSize: "0.8rem", color: "var(--primary-color)" }}>
+                        <span className="tag">
                             #{res.category}
                         </span>
                     </a>
