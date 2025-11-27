@@ -37,7 +37,7 @@ export default async function ResourcesPage() {
                 ))}
 
                 {(!resources || resources.length === 0) && (
-                    <p style={{ textAlign: "center", gridColumn: "1/-1" }}>
+                    <p className="text-center col-span-full">
                         등록된 리소스가 없습니다.
                     </p>
                 )}

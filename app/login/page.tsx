@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
@@ -54,12 +55,12 @@ export default function LoginPage() {
                         required
                     />
                 </div>
-                {error && <p style={{ color: 'var(--error-color)', marginBottom: '1rem' }}>{error}</p>}
-                <button type="submit" className="btn" disabled={loading} style={{ width: '100%' }}>
+                {error && <p className="text-error mb-4">{error}</p>}
+                <button type="submit" className="btn w-full" disabled={loading}>
                     {loading ? '로그인 중...' : '로그인'}
                 </button>
-                <div style={{ marginTop: '1rem', textAlign: 'center' }}>
-                    <a href="/signup">계정이 없으신가요? 회원가입</a>
+                <div className="mt-4 text-center">
+                    <Link href="/signup">계정이 없으신가요? 회원가입</Link>
                 </div>
             </form>
         </div>

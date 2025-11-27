@@ -262,8 +262,40 @@ label {
     grid-column: 1 / -1;
 }
 
+
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
 .mb-8 {
     margin-bottom: 2rem;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}
+
+.text-error {
+    color: var(--error-color);
+}
+
+.text-success {
+    color: var(--success-color);
 }
 
 /* Grid System */

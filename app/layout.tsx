@@ -48,7 +48,7 @@ export default function RootLayout({
                 </header>
                 <main>{children}</main>
                 <footer>
-                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+                    <div className="flex-center gap-2 mb-4">
                         <a
                             href="https://github.com/teddy706"
                             target="_blank"

@@ -35,7 +35,7 @@ export default async function StudyPage() {
                 ))}
 
                 {(!studyLogs || studyLogs.length === 0) && (
-                    <p style={{ textAlign: "center" }}>등록된 학습 기록이 없습니다.</p>
+                    <p className="text-center">등록된 학습 기록이 없습니다.</p>
                 )}
             </section>
         </>

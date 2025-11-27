@@ -59,12 +59,12 @@ export default function SignupPage() {
                         required
                     />
                 </div>
-                {error && <p style={{ color: 'var(--error-color)', marginBottom: '1rem' }}>{error}</p>}
-                {message && <p style={{ color: 'var(--success-color)', marginBottom: '1rem' }}>{message}</p>}
-                <button type="submit" className="btn" disabled={loading} style={{ width: '100%' }}>
+                {error && <p className="text-error mb-4">{error}</p>}
+                {message && <p className="text-success mb-4">{message}</p>}
+                <button type="submit" className="btn w-full" disabled={loading}>
                     {loading ? '처리중...' : '가입하기'}
                 </button>
-                <div style={{ marginTop: '1rem', textAlign: 'center' }}>
+                <div className="mt-4 text-center">
                     <Link href="/login">이미 계정이 있으신가요? 로그인</Link>
                 </div>
             </form>
